@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tamazight Dictionary</title>
+<style>
+:root{--bg:#fffbe6;--bg2:#e3f0ff;--card:#fff;--tx:#1d1a16;--mu:#5a4d3d;--ac:#0a5fd6;--ac2:#e2262b;--gr:#00a152;--ye:#ffc800;--bd:#f2d56b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13110e;--bg2:#0a1a2e;--card:#1f1a15;--tx:#f6eee0;--mu:#bfae92;--ac:#3d8bff;--ac2:#ff5a4e;--gr:#2fd17a;--ye:#ffd21f;--bd:#46392a}}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;color:var(--tx);font-family:system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.5}
+.w{max-width:1200px;margin:0 auto;padding:20px 16px 60px}
+@media (min-width:900px){.w{padding:28px 48px 80px}body{font-size:1.08rem}h1{font-size:2.6rem}.tabs button,.nav button{font-size:1.05rem}#list{column-count:2;column-gap:36px}.ent{break-inside:avoid}#v2,#v3,#v5,#v6{max-width:860px;margin-left:auto;margin-right:auto}#v4{max-width:900px;margin-left:auto;margin-right:auto}body #fc{min-height:320px}.big{font-size:2.4rem}#v7 .card,#v10 .card{column-count:2;column-gap:36px}#v7 details,#v10 details{break-inside:avoid}#v7 h2,#v10 h2,#v7 p.note,#v10 p.note,#v7 .fl,#v10 .fl{column-span:all}}
+h1{margin:0;font-size:1.9rem;background:linear-gradient(90deg,var(--ac),var(--gr),var(--ye),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}.sub{color:var(--mu);margin:2px 0 16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:14px}
+.wod{border:0;color:#fff;background:linear-gradient(135deg,var(--ac),var(--gr))}.wod .lbl,.wod .tag{color:#fff;border-color:#ffffff88}.wod .big,.wod b{color:#fff}.wod .big{color:var(--ye)}
+.lbl{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mu)}
+.big{font-size:2rem;font-weight:700;color:var(--ac)}
+.tf{font-size:1.4rem}
+input,select,button{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 12px}
+input{width:100%}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+button{cursor:pointer}button.p{background:var(--ac);color:#fff;border-color:var(--ac)}
+button.on{background:var(--ac);color:#fff}
+.tag{display:inline-block;font-size:.72rem;border:1px solid var(--bd);border-radius:99px;padding:1px 8px;margin:2px 4px 0 0;color:var(--mu)}
+.ent{border-bottom:1px solid var(--bd);padding:10px 0 10px 12px;border-left:5px solid var(--ac)}.ent:nth-child(4n+2){border-left-color:var(--gr)}.ent:nth-child(4n+3){border-left-color:var(--ye)}.ent:nth-child(4n){border-left-color:var(--ac2)}.t0{background:var(--ac);color:#fff!important}.t1{background:var(--gr);color:#fff!important}.t2{background:var(--ac2);color:#fff!important}.ent:last-child{border:0}
+.var{margin:4px 0}.var b{color:var(--ac)}
+.tabs{display:flex;gap:8px;margin-bottom:14px}.tabs button{flex:1}
+.opts button{display:block;width:100%;text-align:left;margin:6px 0}
+.ok{background:#2e8b57!important;color:#fff}.no{background:var(--ac2)!important;color:#fff}
+.note{font-size:.82rem;color:var(--mu)}.stats{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:8px 12px;margin-bottom:12px;font-weight:600;font-size:.9rem}.tabs{flex-wrap:wrap}.tabs button{flex:1 1 30%}.star{border:0;background:none;font-size:1.2rem;color:var(--ye);padding:0 4px}#fc{min-height:210px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:18px;padding:20px;margin:10px 0;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--ac),var(--gr));animation:pop .3s}#fc.back{background:linear-gradient(135deg,var(--ac2),#e08a00)}#fc .big,#fc b{color:#fff}#fc .note,#fc .tag{color:#fff}.fcb{display:none}.back .fcb{display:block}.back .fcf{display:none}@keyframes pop{from{transform:scale(.94);opacity:.5}to{transform:none;opacity:1}}#pb{height:10px;background:var(--bd);border-radius:9px;overflow:hidden}#fp{height:100%;width:0;background:var(--gr);transition:width .4s}#mg{display:flex;gap:10px}#mg>div{flex:1}#mg button{display:block;width:100%;margin:6px 0}.sel{outline:3px solid var(--ye)}details{background:var(--card);border:1px solid var(--bd);border-left:6px solid var(--ac);border-radius:12px;padding:10px 14px;margin:8px 0}details:nth-of-type(4n+2){border-left-color:var(--gr)}details:nth-of-type(4n+3){border-left-color:var(--ye)}details:nth-of-type(4n){border-left-color:var(--ac2)}summary{font-weight:700;cursor:pointer}.yr{color:var(--ac2);font-weight:700}.cg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.fl{height:8px;border-radius:6px;background:linear-gradient(90deg,var(--ac),var(--gr),var(--ye),var(--ac2));margin:8px 0 14px}.hero{background:linear-gradient(135deg,var(--ac),var(--gr));color:#fff;border-radius:16px;padding:20px;margin-bottom:14px}.hero h2{margin:0 0 6px}.hero input{margin-top:8px}[hidden]{display:none!important}.nav{display:flex;gap:8px;margin-bottom:12px}.nav button{flex:1;font-weight:700;padding:12px}.nav button.on{background:var(--ac2);border-color:var(--ac2)}body::before{content:"";display:block;height:12px;background:linear-gradient(90deg,var(--ac) 0 25%,var(--gr) 25% 50%,var(--ye) 50% 75%,var(--ac2) 75%)}button{transition:.15s}button:hover{filter:brightness(1.1);transform:translateY(-1px)}button.p{background:var(--ac2);border-color:var(--ac2)}#n1.on{background:var(--ac);border-color:var(--ac)}#n2.on{background:var(--gr);border-color:var(--gr)}#n3.on{background:var(--ac2);border-color:var(--ac2)}.tabs button:nth-child(4n+2).on{background:var(--gr);border-color:var(--gr)}.tabs button:nth-child(4n+3).on{background:var(--ye);border-color:var(--ye);color:#1d1a16}.tabs button:nth-child(4n).on{background:var(--ac2);border-color:var(--ac2)}.card{border-top:5px solid var(--ac)}.card:nth-of-type(even){border-top-color:var(--gr)}.wod{border-top:0}.stats{border-left:6px solid var(--ye)}input:focus,select:focus{outline:3px solid var(--ye)}.big{color:var(--ac2)}.var b{color:#00803f}.wod .var b,#fc .var b{color:#fff}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .var b{color:var(--gr)}}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>ⵜⴰⵎⴰⵣⵉⵖⵜ Tamazight Dictionary</h1>
+<p class="sub">Kabyle · Tashelhit · Central Atlas Tamazight ↔ English</p><div class="stats" id="st"></div>
+
+<div class="nav"><button id="n1" class="on">Dictionary</button><button id="n2">History</button><button id="n3">About me</button></div><div class="tabs" id="sd">
+<button id="t1" class="on">Words</button><button id="t4">Cards</button><button id="t2">Quiz</button><button id="t5">Match</button><button id="t6">Phrases</button><button id="t3">Add</button></div><div class="tabs" id="sh" hidden><button id="t7" class="on">Timeline</button><button id="t10">People</button><button id="t8">Tamazgha</button>
+</div>
+
+<div id="v1">
+<div class="card wod"><div class="lbl">Word of the day</div><div id="wod"></div></div>
+<input id="q" type="search" placeholder="Search in English or Amazigh…">
+<div class="row">
+<select id="vf"><option value="all">All varieties</option><option value="kab">Kabyle</option><option value="shi">Tashelhit</option><option value="tzm">Central Atlas</option></select>
+<button id="sc">Show Tifinagh</button>
+</div>
+<div class="card" id="list"></div>
+</div>
+
+<div id="v2" hidden>
+<div class="card"><div class="lbl">What does this mean?</div><div id="qw" class="big"></div><div id="qo" class="opts"></div><button id="qn" class="p" hidden>Next word →</button><p class="note" id="qs"></p></div>
+</div>
+
+<div id="v3" hidden>
+<div class="card">
+<p class="note">Added words are saved only in this browser. Please have a native speaker confirm them.</p>
+<input id="aen" placeholder="English meaning"><div class="row"></div>
+<input id="alat" placeholder="Amazigh (Latin spelling)"><div class="row"></div>
+<input id="atif" placeholder="Tifinagh (optional)"><div class="row">
+<select id="avar"><option value="kab">Kabyle</option><option value="shi">Tashelhit</option><option value="tzm">Central Atlas</option></select>
+<button class="p" id="add">Add word</button></div>
+<p class="note" id="am"></p>
+</div>
+</div>
+
+<div id="v4" hidden><div class="row"><select id="fm"><option value="all">All words</option><option value="new">Only words I haven’t learned</option></select><select id="fdir"><option value="0">Amazigh → English</option><option value="1">English → Amazigh</option></select></div><div id="pb"><div id="fp"></div></div><div id="fc"></div><div class="row"><button id="fn" style="flex:1">Still learning</button><button id="fy" class="p" style="flex:1">I know it</button></div></div><div id="v5" hidden><div class="card"><div class="lbl">Tap an Amazigh word, then its English meaning</div><div id="mg"><div id="ml"></div><div id="mr"></div></div><p id="mm" class="note"></p><button id="mre" class="p">New round</button></div></div><div id="v6" hidden><div class="card"><div class="lbl">Kabyle phrases</div><div id="sk"></div><div class="row"><button id="sr">Show meaning</button><button id="sx" class="p">Next →</button></div><p class="note">Phrases are Kabyle only for now and should be checked by a native speaker.</p></div></div><div id="v7" hidden><div class="card"><h2 style="margin:0">A short history of the Imazighen</h2><p class="note">Imazighen (singular: Amazigh) means “free people”. Tap each period to open it.</p><div class="fl"></div>
+<details open><summary><span class="yr">Ancient times</span> · Indigenous to North Africa</summary><p>The Imazighen have lived across North Africa for thousands of years. Rock art in the Tassili n’Ajjer in southern Algeria shows ancient life in the Sahara, and the old Libyco-Berber script is the ancestor of today’s Tifinagh.</p></details>
+<details><summary><span class="yr">c. 945 BCE</span> · Sheshonq I</summary><p>Sheshonq I, of Libyan (Amazigh) origin, became pharaoh of Egypt and founded the 22nd Dynasty. The Amazigh calendar counts its years from around this date, which is why Yennayer in 2026 marks the year 2976.</p></details>
+<details><summary><span class="yr">c. 202 BCE</span> · Numidia and Massinissa</summary><p>Massinissa united Amazigh peoples into the kingdom of Numidia, in what is now Algeria and Tunisia. Later Amazigh leaders like Jugurtha resisted Rome, and Juba II ruled Mauretania as a scholar-king.</p></details>
+<details><summary><span class="yr">Roman era</span> · Writers and thinkers</summary><p>North Africa produced great figures like Apuleius, from Madauros, and Augustine of Hippo, born in Thagaste (today’s Souk Ahras in Algeria). Augustine is widely believed to have had Amazigh roots.</p></details>
+<details><summary><span class="yr">c. 814 to 146 BCE</span> · Carthage and Hannibal</summary><p>Phoenicians founded Carthage on the coast of today’s Tunisia, and Amazigh kingdoms and tribes around it were sometimes allies and sometimes rivals. Numidian cavalry, famed riders from Amazigh lands, fought for Hannibal and later for Rome, and Massinissa’s support for Rome helped end Carthage in 146 BCE.</p></details>
+<details><summary><span class="yr">5th to 6th century</span> · Vandals and Byzantines</summary><p>After Rome weakened, the Vandals took Carthage in 439, and later the Byzantines reconquered parts of North Africa. In the mountains and the interior, Amazigh kingdoms and chiefs often ruled themselves.</p></details>
+<details><summary><span class="yr">7th century</span> · Resistance and Islam</summary><p>As Arab armies arrived, Amazigh leaders such as Kusaila and the queen Dihya (known as Kahina) resisted. Over time most Imazighen embraced Islam, and Amazigh commanders like Tariq ibn Ziyad took part in the move into Iberia in 711.</p></details>
+<details><summary><span class="yr">8th to 12th centuries</span> · Amazigh dynasties</summary><p>Amazigh-led states shaped the region: the Rustamids of Tahert in Algeria, the Zirids, the Almoravids and the Almohads, who ruled across the Maghreb and al-Andalus. The Kutama of Kabylie also helped bring the Fatimids to power.</p></details>
+<details><summary><span class="yr">1830 to 1962</span> · Colonial era</summary><p>France invaded Algeria in 1830. Amazigh figures like Lalla Fatma n’Soumer and the leaders of the 1871 Mokrani revolt in Kabylie resisted. In Morocco’s Rif mountains, Abd el-Krim led a republic in the 1920s. Many Kabyle leaders and fighters, such as Hocine Aït Ahmed and Krim Belkacem, helped win Algeria’s independence in 1962.</p></details>
+<details><summary><span class="yr">After independence</span> · Arabization and identity</summary><p>After independence, Arabic became Algeria’s sole official language, and Amazigh identity and language were often sidelined. This left many Amazigh people feeling their culture was not recognized.</p></details>
+<details><summary><span class="yr">April 1980</span> · The Berber Spring</summary><p>A ban on writer Mouloud Mammeri’s lecture on ancient Kabyle poetry in Tizi Ouzou set off protests across Kabylie. The “Berber Spring” became a turning point for the modern Amazigh cultural movement.</p></details>
+<details><summary><span class="yr">1998 to 2001</span> · Flag and Black Spring</summary><p>The Amazigh flag, with blue, green and yellow stripes and the red letter ⵣ (yaz), was adopted by the World Amazigh Congress in 1998. In 2001, the “Black Spring” protests in Kabylie ended with more than 120 people killed and led to major changes.</p></details>
+<details><summary><span class="yr">2002 to 2023</span> · Recognition</summary><p>Algeria recognized Tamazight as a national language in 2002 and an official language in 2016, and made Yennayer an official holiday in 2018. Morocco made Amazigh official in 2011, passed an implementing law in 2019, and made Yennayer a national holiday in 2023.</p></details>
+<details><summary><span class="yr">2001 to 2003</span> · Morocco’s IRCAM</summary><p>Morocco created the Royal Institute of Amazigh Culture (IRCAM) in 2001, and in 2003 Tifinagh was adopted as the script for teaching Amazigh in schools there.</p></details>
+<details><summary><span class="yr">Today</span> · Still growing</summary><p>Tamazight is taught in some schools and used in media, but activists say implementation is still uneven. Learning, writing and sharing the language, like in this dictionary, helps keep it alive.</p></details></div></div>
+<div id="v8" hidden><div class="card"><h2 style="margin:0">Tamazgha: the Amazigh homeland</h2><p class="note">Tamazgha is the name many Imazighen use for their historic lands, from the Atlantic to Egypt’s Siwa Oasis and south into the Sahel. Tap a place.</p><div class="fl"></div><div class="cg" id="cb"></div><div id="cd"></div></div></div>
+<div id="v9" hidden><div class="hero"><h2>Hi, I’m <span id="nh">Ines Aliche</span></h2><div>16 · Algerian · Future political science major</div><input id="nm" placeholder="Type your name here"></div><div class="card"><div class="lbl">About me</div><p>I’m a 16-year-old Algerian who loves my culture and my identity. I’m planning to study political science, because I want to understand how governments work and how people’s languages, histories and voices are represented.</p><p>I built this dictionary as a passion project. Tamazight is a big part of who we are, and I want it to be easy for anyone, whether they’re Amazigh or just curious, to learn the words, the history and the stories.</p></div><div class="card"><div class="lbl">What I care about</div><span class="tag t0">Amazigh identity</span><span class="tag t1">Language and culture</span><span class="tag t2">History</span><span class="tag t0">Politics and society</span><span class="tag t1">Algeria</span></div><div class="card"><div class="lbl">Where I’m headed</div><p>My goal is to study political science at university, learn more about how language rights and cultural recognition work around the world, and keep growing this project with more words, phrases and recordings from native speakers.</p></div></div>
+<div id="v10" hidden><div class="card"><h2 style="margin:0">Famous Imazighen</h2><p class="note">Kings, rebels, writers and artists. Tap a name to read more.</p><div class="fl"></div>
+<details open><summary><span class="yr">Massinissa</span> · King of Numidia</summary><p>Amazigh king who united much of Numidia around 202 BCE and built a strong, organized kingdom.</p></details>
+<details><summary><span class="yr">Jugurtha</span> · Numidian king</summary><p>Grandson of Massinissa who fought a long war against Rome in the late 2nd century BCE and became a symbol of resistance.</p></details>
+<details><summary><span class="yr">Juba II</span> · Scholar-king of Mauretania</summary><p>Raised in Rome, he ruled Mauretania and wrote books on geography and history. He married Cleopatra Selene, the daughter of Cleopatra and Mark Antony.</p></details>
+<details><summary><span class="yr">Apuleius</span> · Writer</summary><p>Born in Madauros in today’s Algeria in the 2nd century CE, he wrote the Latin novel known as The Golden Ass, one of the oldest surviving novels.</p></details>
+<details><summary><span class="yr">Augustine of Hippo</span> · Philosopher</summary><p>Born in Thagaste (now Souk Ahras, Algeria) in 354 CE, he became one of the most influential thinkers in Christian history. Many historians believe he had Amazigh roots.</p></details>
+<details><summary><span class="yr">Dihya (Kahina)</span> · Warrior queen</summary><p>An Amazigh queen who led resistance in the Aurès mountains in the late 7th century and is remembered as a symbol of courage.</p></details>
+<details><summary><span class="yr">Tariq ibn Ziyad</span> · Commander</summary><p>Amazigh military leader who led the crossing into Iberia in 711. Gibraltar (Jabal Tariq) is named after him.</p></details>
+<details><summary><span class="yr">Ibn Tumart and Yusuf ibn Tashfin</span> · Dynasty builders</summary><p>Yusuf ibn Tashfin helped build the Almoravid empire, and Ibn Tumart founded the Almohad movement. Both dynasties were Amazigh-led and ruled Morocco and parts of Spain.</p></details>
+<details><summary><span class="yr">Ibn Battuta</span> · Traveler</summary><p>Born in Tangier in 1304, he traveled across much of the known world for about 30 years. He is often described as being of Amazigh descent.</p></details>
+<details><summary><span class="yr">Lalla Fatma n’Soumer</span> · Kabyle resistance leader</summary><p>A woman from Kabylie who led resistance against the French army in the 1850s, often called the Joan of Arc of Djurdjura.</p></details>
+<details><summary><span class="yr">Abd el-Krim</span> · Rif leader</summary><p>He led the Rif War in northern Morocco against Spain and France in the 1920s and founded the Republic of the Rif.</p></details>
+<details><summary><span class="yr">Hocine Aït Ahmed, Krim Belkacem, Abane Ramdane</span> · Independence leaders</summary><p>Kabyle figures who played major roles in Algeria’s war of independence from France between 1954 and 1962.</p></details>
+<details><summary><span class="yr">Mouloud Mammeri</span> · Writer and linguist</summary><p>Kabyle novelist and scholar (1917 to 1989) who collected and studied Amazigh poetry and wrote a Kabyle grammar. His banned lecture in 1980 helped spark the Berber Spring.</p></details>
+<details><summary><span class="yr">Mouloud Feraoun</span> · Writer</summary><p>Kabyle author of Le Fils du pauvre (The Poor Man’s Son), a famous novel about village life in Kabylie.</p></details>
+<details><summary><span class="yr">Taos Amrouche</span> · Singer and writer</summary><p>Kabyle singer and author (1913 to 1976) who worked to preserve and perform traditional Kabyle songs.</p></details>
+<details><summary><span class="yr">Idir</span> · Singer</summary><p>Kabyle singer (1949 to 2020) whose song A Vava Inouva made Kabyle music famous around the world.</p></details>
+<details><summary><span class="yr">Lounes Matoub</span> · Singer and poet</summary><p>Kabyle singer-songwriter whose songs about identity and freedom made him a major voice of his generation. He was killed in 1998.</p></details>
+<details><summary><span class="yr">Tinariwen</span> · Tuareg band</summary><p>A band from northern Mali that helped bring Tuareg desert blues to the world and won a Grammy for Best World Music Album in 2012.</p></details>
+<details><summary><span class="yr">Zinedine Zidane</span> · Footballer</summary><p>French football legend whose parents come from Kabylie in Algeria.</p></details></div></div>
+<p class="note">This is a starter set. Spellings differ between regions and speakers, so please verify entries with native speakers before relying on them.</p>
+</div>
+<script>
+var VN={kab:"Kabyle",shi:"Tashelhit",tzm:"Central Atlas"};
+// en, then [kab, shi, tzm] Latin, Tifinagh
+var D=[
+["hello",["azul","azul","azul"],"ⴰⵣⵓⵍ"],
+["thank you",["tanemmirt","tanmmirt","tanmirt"],"ⵜⴰⵏⵎⵎⵉⵔⵜ"],
+["water",["aman","aman","aman"],"ⴰⵎⴰⵏ"],
+["sun",["tafukt","tafukt","tafukt"],"ⵜⴰⴼⵓⴽⵜ"],
+["moon",["ayyur","ayyur","ayyur"],"ⴰⵢⵢⵓⵔ"],
+["star",["itri","itri","itri"],"ⵉⵜⵔⵉ"],
+["mountain",["adrar","adrar","adrar"],"ⴰⴷⵔⴰⵔ"],
+["earth / land",["akal","akal","akal"],"ⴰⴽⴰⵍ"],
+["stone",["azru","azru","azru"],"ⴰⵣⵔⵓ"],
+["house",["axxam","tigmmi","tigmmi"],"ⵜⵉⴳⵎⵎⵉ"],
+["village",["taddart","taddart","taddart"],"ⵜⴰⴷⴷⴰⵔⵜ"],
+["bread",["aɣrum","aɣrum","aɣrum"],"ⴰⵖⵔⵓⵎ"],
+["tea",["atay","atay","atay"],"ⴰⵜⴰⵢ"],
+["man",["argaz","argaz","argaz"],"ⴰⵔⴳⴰⵣ"],
+["woman",["tameṭṭut","tamttut","tamttut"],"ⵜⴰⵎⵟⵟⵓⵜ"],
+["Amazigh (free person)",["amaziɣ","amaziɣ","amaziɣ"],"ⴰⵎⴰⵣⵉⵖ"],
+["language",["tutlayt","tutlayt","tutlayt"],"ⵜⵓⵜⵍⴰⵢⵜ"],
+["day",["ass","ass","ass"],"ⴰⵙⵙ"],
+["night",["iḍ","iḍ","iḍ"],"ⵉⴹ"],
+["eye",["tiṭ","titt","titt"],"ⵜⵉⵟ"],
+["heart",["ul","ul","ul"],"ⵓⵍ"],
+["year",["aseggas","asggʷas","asggʷas"],"ⴰⵙⴳⵯⴰⵙ"],
+["argan",["","argan",""],"ⴰⵔⴳⴰⵏ"],
+["yes",["ih","ih","ih"],"ⵉⵀ"],
+["no",["uhu","uhu","uhu"],"ⵓⵀⵓ"],
+["friend",["amdakkel","amdakkʷl","amdakkʷl"],"ⴰⵎⴷⴰⴽⴽⵯⵍ"],
+["mother",["yemma","imma","imma"],"ⵉⵎⵎⴰ"],
+["father",["baba","baba","baba"],"ⴱⴰⴱⴰ"],
+["name",["isem","isem","isem"],"ⵉⵙⵎ"],
+["life",["tudert","tudert","tudert"],"ⵜⵓⴷⵔⵜ"],
+["hand",["afus","afus","afus"],"ⴰⴼⵓⵙ"],
+["foot",["aḍar","aḍar","aḍar"],"ⴰⴹⴰⵔ"],
+["mouth",["imi","imi","imi"],"ⵉⵎⵉ"],
+["river",["asif","asif","asif"],"ⴰⵙⵉⴼ"],
+["snow",["adfel","adfel","adfel"],"ⴰⴷⴼⵍ"],
+["door",["tawwurt","tawwurt","tawwurt"],"ⵜⴰⵡⵡⵓⵔⵜ"],
+["road / path",["abrid","abrid","abrid"],"ⴰⴱⵔⵉⴷ"],
+["market",["asuq","asuq","asuq"],"ⴰⵙⵓⵇ"],
+["milk",["ayefki","akfay","akfay"],"ⴰⴽⴼⴰⵢ"],
+["butter",["udi","udi","udi"],"ⵓⴷⵉ"],
+["honey",["tament","tamment","tamment"],"ⵜⴰⵎⵎⵏⵜ"],
+["olive",["tazemmurt","tazemmurt","tazemmurt"],"ⵜⴰⵣⵎⵎⵓⵔⵜ"],
+["fig",["tazart","tazart","tazart"],"ⵜⴰⵣⴰⵔⵜ"],
+["dog",["aqjun","aydi","aydi"],"ⴰⵢⴷⵉ"],
+["lion",["izem","izem","izem"],"ⵉⵣⵎ"],
+["one",["yiwen","yan","yan"],"ⵢⴰⵏ"],
+["two",["sin","sin","sin"],"ⵙⵉⵏ"],
+["three",["kraḍ","kraḍ","kraḍ"],"ⴽⵔⴰⴹ"],
+["four",["kkuẓ","kkuz","kkuẓ"],"ⴽⴽⵓⵣ"],
+["five",["semmus","smmus","smmus"],"ⵙⵎⵎⵓⵙ"],
+["red",["azeggaɣ","azeggaɣ","azeggaɣ"],"ⴰⵣⴳⴳⴰⵖ"],
+["green",["azegzaw","azegzaw","azegzaw"],"ⴰⵣⴳⵣⴰⵡ"],
+["white",["amellal","amellal","amellal"],"ⴰⵎⵍⵍⴰⵍ"],
+["black",["aberkan","aberkan","aberkan"],"ⴰⴱⵔⴽⴰⵏ"],
+["yellow",["awraɣ","awraɣ","awraɣ"],"ⴰⵡⵔⴰⵖ"],
+["today",["ass-a","assa","assa"],"ⴰⵙⵙⴰ"],
+["tomorrow",["azekka","azekka","azekka"],"ⴰⵣⴽⴽⴰ"],
+["yesterday",["iḍelli","iḍelli","iḍelli"],"ⵉⴹⵍⵍⵉ"],
+["wind",["aḍu","aḍu","aḍu"],"ⴰⴹⵓ"],
+["rain",["","anzar","anzar"],"ⴰⵏⵣⴰⵔ"],
+["spring (water source)",["tala","tala","tala"],"ⵜⴰⵍⴰ"],
+["desert",["tiniri","tiniri","tiniri"],"ⵜⵉⵏⵉⵔⵉ"],
+["couscous",["seksu","seksu","seksu"],"ⵙⴽⵙⵓ"],
+["oil",["zzit","zzit","zzit"],"ⵣⵣⵉⵜ"],
+["meat",["aksum","aksum","aksum"],"ⴰⴽⵙⵓⵎ"],
+["date palm",["tazdayt","tazdayt","tazdayt"],"ⵜⴰⵣⴷⴰⵢⵜ"],
+["barley",["timzin","timzin","timzin"],"ⵜⵉⵎⵣⵉⵏ"],
+["wheat",["irden","irden","irden"],"ⵉⵔⴷⵏ"],
+["horse",["aɛewdiw","ayyis","ayyis"],"ⴰⵢⵢⵉⵙ"],
+["donkey",["aɣyul","aɣyul","aɣyul"],"ⴰⵖⵢⵓⵍ"],
+["cow",["tafunast","tafunast","tafunast"],"ⵜⴰⴼⵓⵏⴰⵙⵜ"],
+["ox / bull",["azger","azger","azger"],"ⴰⵣⴳⵔ"],
+["fish",["aslem","aslem","aslem"],"ⴰⵙⵍⵎ"],
+["bee",["tazizwit","tazizwit","tazizwit"],"ⵜⴰⵣⵉⵣⵡⵉⵜ"],
+["wolf / jackal",["uccen","uccen","uccen"],"ⵓⵛⵛⵏ"],
+["key",["tasarut","tasarut","tasarut"],"ⵜⴰⵙⴰⵔⵓⵜ"],
+["word",["awal","awal","awal"],"ⴰⵡⴰⵍ"],
+["story / tale",["tamacahut","tamacahut","tamacahut"],"ⵜⴰⵎⴰⵛⴰⵀⵓⵜ"],
+["song / poem",["izli","izli","izli"],"ⵉⵣⵍⵉ"],
+["freedom",["tilelli","tilelli","tilelli"],""],
+["love",["tayri","tayri","tayri"],"ⵜⴰⵢⵔⵉ"],
+["to go",["ddu","ddu","ddu"],"ⴷⴷⵓ"],
+["to eat",["ečč","cc","cc"],"ⵛⵛ"],
+["to drink",["sew","swu","swu"],"ⵙⵡⵓ"],
+["to write",["aru","aru","aru"],"ⴰⵔⵓ"],
+["to read",["ɣer","ɣr","ɣr"],"ⵖⵔ"],
+["small",["meẓẓi","mzzi","mzzi"],"ⵎⵣⵣⵉ"],
+["new",["amaynut","amaynut","amaynut"],"ⴰⵎⴰⵢⵏⵓⵜ"],
+["old",["aqdim","aqdim","aqdim"],"ⴰⵇⴷⵉⵎ"],
+["spring (season)",["tafsut","tafsut","tafsut"],"ⵜⴰⴼⵙⵓⵜ"],
+["summer",["anebdu","anebdu","anebdu"],"ⴰⵏⴱⴷⵓ"],
+["winter",["tagrest","tagrest","tagrest"],"ⵜⴰⴳⵔⵙⵜ"],
+["month",["ayyur","ayyur","ayyur"],"ⴰⵢⵢⵓⵔ"],
+["face",["udem","udem","udem"],"ⵓⴷⵎ"],
+["blood",["idammen","idammen","idammen"],"ⵉⴷⴰⵎⵎⵏ"],
+["bone",["iɣes","iɣes","iɣes"],"ⵉⵖⵙ"],
+["welcome",["ansuf","ansuf","ansuf"],"ⴰⵏⵙⵓⴼ"],
+["land / country",["tamurt","tamurt","tamurt"],"ⵜⴰⵎⵓⵔⵜ"],
+["nation / people",["aɣref","aɣref","aɣref"],"ⴰⵖⵔⴼ"],
+["tribe",["taqbilt","taqbilt","taqbilt"],"ⵜⴰⵇⴱⵉⵍⵜ"],
+["city",["tamdint","tamdint","tamdint"],"ⵜⴰⵎⴷⵉⵏⵜ"],
+["book",["adlis","adlis","adlis"],"ⴰⴷⵍⵉⵙ"],
+["history",["amezruy","amezruy","amezruy"],"ⴰⵎⵣⵔⵓⵢ"],
+["culture",["adelsan","adelsan","adelsan"],"ⴰⴷⵍⵙⴰⵏ"],
+["identity",["tamagit","tamagit","tamagit"],"ⵜⴰⵎⴰⴳⵉⵜ"],
+["rights",["izerfan","izerfan","izerfan"],"ⵉⵣⵔⴼⴰⵏ"],
+["peace / calm",["talwit","talwit","talwit"],"ⵜⴰⵍⵡⵉⵜ"],
+["sister",["weltma","ultma","ultma"],"ⵓⵍⵜⵎⴰ"],
+["brother",["ɣma","gma","gma"],"ⵖⵎⴰ"]
+];
+var user=[];try{user=JSON.parse(localStorage.getItem("amz")||"[]")}catch(e){}
+var tif=false;
+function all(){return D.concat(user)}
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function vlines(e,f){var o="",k=["kab","shi","tzm"];for(var i=0;i<3;i++){if(!e[1][i])continue;if(f!=="all"&&f!==k[i])continue;o+='<div class="var"><span class="tag t'+i+'">'+VN[k[i]]+'</span> <b>'+esc(e[1][i])+'</b></div>'}return o}
+function render(){
+var q=$("q").value.trim().toLowerCase(),f=$("vf").value,h="",n=0;
+all().forEach(function(e){
+var hay=(e[0]+" "+e[1].join(" ")+" "+e[2]).toLowerCase();
+if(q&&hay.indexOf(q)<0)return;
+var v=vlines(e,f);if(!v)return;n++;
+h+='<div class="ent"><div><button class="star" data-k="'+esc(e[0])+'">'+(fav[e[0]]?'★':'☆')+'</button><b>'+esc(e[0])+'</b>'+(tif?' <span class="tf">'+esc(e[2])+'</span>':'')+'</div>'+v+'</div>'});
+$("list").innerHTML=h||'<p class="note">No matches. Try another spelling or add the word in the "Add a word" tab.</p>';
+}
+function wod(){
+var d=new Date(),k=d.getFullYear()*372+d.getMonth()*31+d.getDate(),a=all(),e=a[k%a.length];
+$("wod").innerHTML='<div class="big">'+esc(e[1].filter(Boolean)[0])+'</div><div class="tf">'+esc(e[2])+'</div><div><b>'+esc(e[0])+'</b></div>'+vlines(e,"all");
+}
+var cur=null,score=0,tot=0;
+function quiz(){
+var a=all(),i=Math.floor(Math.random()*a.length);cur=a[i];
+var opts=[cur[0]];
+while(opts.length<4){var o=a[Math.floor(Math.random()*a.length)][0];if(opts.indexOf(o)<0)opts.push(o)}
+opts.sort(function(){return Math.random()-.5});
+var vs=cur[1].filter(Boolean);
+$("qw").textContent=vs[Math.floor(Math.random()*vs.length)]+"  "+cur[2];
+$("qo").innerHTML=opts.map(function(o){return '<button data-o="'+esc(o)+'">'+esc(o)+'</button>'}).join("");
+$("qn").hidden=true;
+}
+$("qo").onclick=function(ev){
+var b=ev.target.closest("button");if(!b||$("qn").hidden===false)return;
+tot++;var right=b.getAttribute("data-o")===cur[0];if(right){score++;addXP(5)}
+b.className=right?"ok":"no";
+if(!right){[].forEach.call($("qo").children,function(c){if(c.getAttribute("data-o")===cur[0])c.className="ok"})}
+$("qs").textContent="Score: "+score+" / "+tot;$("qn").hidden=false;
+};
+$("qn").onclick=quiz;
+function tab(n){
+for(var i=1;i<=10;i++){$("v"+i).hidden=i!==n;var tb=$("t"+i);if(tb)tb.className=i===n?"on":""}
+if(n===2)quiz();if(n===4)fcStart();if(n===5)mStart();if(n===6)sRender();
+}
+$("t1").onclick=function(){tab(1)};$("t2").onclick=function(){tab(2)};$("t3").onclick=function(){tab(3)};$("t4").onclick=function(){tab(4)};$("t5").onclick=function(){tab(5)};$("t6").onclick=function(){tab(6)};$("t7").onclick=function(){tab(7)};$("t8").onclick=function(){tab(8)};$("t10").onclick=function(){tab(10)};
+function sec(s){$("sd").hidden=s!==1;$("sh").hidden=s!==2;$("st").hidden=s!==1;for(var j=1;j<=3;j++)$("n"+j).className=j===s?"on":"";tab(s===1?1:s===2?7:9)}
+$("n1").onclick=function(){sec(1)};$("n2").onclick=function(){sec(2)};$("n3").onclick=function(){sec(3)};
+$("q").oninput=render;$("vf").onchange=render;
+$("sc").onclick=function(){tif=!tif;this.textContent=tif?"Hide Tifinagh":"Show Tifinagh";render()};
+$("add").onclick=function(){
+var en=$("aen").value.trim(),la=$("alat").value.trim();
+if(!en||!la){$("am").textContent="Please fill in the English meaning and the Amazigh word.";return}
+var arr=["","",""],ix={kab:0,shi:1,tzm:2}[$("avar").value];arr[ix]=la;
+user.push([en,arr,$("atif").value.trim()]);
+try{localStorage.setItem("amz",JSON.stringify(user))}catch(e){}
+$("aen").value=$("alat").value=$("atif").value="";
+$("am").textContent="Added! Find it in the Dictionary tab.";render();
+};
+var S={};try{S=JSON.parse(localStorage.getItem('amz2')||'{}')}catch(e){}
+S.xp=S.xp||0;S.fav=S.fav||{};S.known=S.known||{};S.streak=S.streak||0;S.last=S.last||'';var fav=S.fav;
+function save(){try{localStorage.setItem('amz2',JSON.stringify(S))}catch(e){}}
+function touch(){var t=new Date().toDateString();if(S.last!==t){var y=new Date(Date.now()-864e5).toDateString();S.streak=S.last===y?S.streak+1:1;S.last=t;save()}}
+function addXP(n){S.xp+=n;touch();save();stats()}
+function stats(){$('st').textContent='Streak: '+S.streak+' days · '+S.xp+' XP · Level '+(Math.floor(S.xp/50)+1)+' · '+Object.keys(S.known).length+' learned'}
+$('list').onclick=function(ev){var b=ev.target.closest('.star');if(!b)return;var k=b.getAttribute('data-k');if(fav[k])delete fav[k];else fav[k]=1;save();render()};
+function shuf(a){return a.sort(function(){return Math.random()-.5})}
+var fd=[],fi=0;
+function fcStart(){fd=shuf(all().filter(function(e){return $('fm').value!=='new'||!S.known[e[0]]}));fi=0;fcShow()}
+function fcShow(){var c=$('fc');c.classList.remove('back');if(!fd.length){c.innerHTML='<b>You know every word!</b>';return}
+var e=fd[fi],vs=e[1].filter(Boolean),r=$('fdir').value==='1';
+var A='<div class="big">'+esc(vs[0])+'</div><div class="tf">'+esc(e[2])+'</div>',E='<div class="big">'+esc(e[0])+'</div>',V=vlines(e,'all');
+c.innerHTML='<div class="fcf">'+(r?E:A)+'<p class="note">tap to flip</p></div><div class="fcb">'+(r?A+V:E+V)+'</div>';
+$('fp').style.width=Math.round(Object.keys(S.known).length/all().length*100)+'%'}
+$('fc').onclick=function(){this.classList.toggle('back')};
+function fcNext(e){if(e&&$('fm').value==='new')fd.splice(fd.indexOf(e),1);else fi++;if(fi>=fd.length)fi=0;fcShow()}
+$('fy').onclick=function(){if(!fd.length)return;var e=fd[fi];S.known[e[0]]=1;addXP(3);fcNext(e)};
+$('fn').onclick=function(){if(fd.length)fcNext()};
+$('fm').onchange=$('fdir').onchange=fcStart;
+var ms=null,mc=0;
+function mb(x){return '<button data-i="'+x.i+'">'+esc(x.t)+'</button>'}
+function mStart(){var a=shuf(all().slice()).slice(0,5),L=a.map(function(e,i){return{t:e[1].filter(Boolean)[0],i:i}}),R=a.map(function(e,i){return{t:e[0],i:i}});
+mc=0;ms=null;$('ml').innerHTML=shuf(L).map(mb).join('');$('mr').innerHTML=shuf(R).map(mb).join('');$('mm').textContent='Match all 5 pairs!'}
+$('mre').onclick=mStart;
+$('mg').onclick=function(ev){var bt=ev.target.closest('button');if(!bt||bt.disabled)return;
+if(bt.parentNode.id==='ml'){[].forEach.call($('ml').children,function(c){c.classList.remove('sel')});bt.classList.add('sel');ms=bt;return}
+if(!ms)return;
+if(ms.getAttribute('data-i')===bt.getAttribute('data-i')){ms.className=bt.className='ok';ms.disabled=bt.disabled=true;mc++;addXP(2);ms=null;if(mc===5){$('mm').textContent='All matched! +10 bonus XP';addXP(10)}}
+else{bt.classList.add('no');setTimeout(function(){bt.classList.remove('no')},500)}};
+var SN=[['Azul, amek telliḍ?','Hello, how are you? (to a man)'],['Tanemmirt, a ṣṣaḥbi.','Thank you, my friend.'],['Isem-iw d Amina.','My name is Amina.'],['Aman, ttxil-k.','Water, please.'],['Tanemmirt fell-ak.','Thank you (to a man).'],['Ass-a yella wedfel.','Today there is snow.']],si=0;
+function sRender(){var s=SN[si%SN.length];$('sk').innerHTML='<div class="big">'+esc(s[0])+'</div><div id="se" class="big" style="color:var(--ac2);font-size:1.3rem" hidden>'+esc(s[1])+'</div>'}
+$('sr').onclick=function(){var e=$('se');if(e){e.hidden=false;addXP(1)}};
+$('sx').onclick=function(){si++;sRender()};
+var CT=[['Algeria','Kabyle in Kabylie, Chaoui in the Aurès, Mozabite in the Mzab valley, and Tuareg Tamasheq in the far south. Tamazight became a national language in 2002 and an official language in 2016. Yennayer became an official holiday in 2018.'],['Morocco','Tashelhit in the south, Central Atlas Tamazight in the middle, and Tarifit in the north (the Rif). Official language since 2011, with an implementing law in 2019. Yennayer became a national holiday in 2023.'],['Libya','Nafusi in the Nafusa Mountains, plus Zuwara, Ghadames, Sokna and Awjila, and Tuareg in the southwest. Amazigh communities there have pushed for constitutional recognition.'],['Tunisia','Small communities mostly in the south, such as on Djerba island and in Matmata and villages like Chenini and Douiret. Shilha varieties are spoken. It has no official status.'],['Egypt','Siwi is spoken in the Siwa Oasis in the western desert, close to the Libyan border.'],['Mali','Tuareg (Tamasheq) is spoken in the north. It is recognized as a national language, and both Tifinagh and a Latin-based alphabet are used.'],['Niger','Tuareg (Tamajaq) is spoken in the north, including the Agadez region. It is recognized as a national language.'],['Burkina Faso','Small Tuareg communities live in the north of the country.'],['Mauritania','Very small groups speak Zenaga, which is considered endangered.'],['Canary Islands','The Guanches, the islands’ original people, spoke a Berber language until the Spanish conquest in the 15th century.']];
+function cRender(i){i=i||0;$('cb').innerHTML=CT.map(function(c,k){return '<button data-k="'+k+'" class="'+(k===i?'on':'')+'">'+esc(c[0])+'</button>'}).join('');$('cd').innerHTML='<h3 style="margin:0 0 6px;color:var(--ac2)">'+esc(CT[i][0])+'</h3><p>'+esc(CT[i][1])+'</p>'}
+$('cb').onclick=function(ev){var b=ev.target.closest('button');if(b)cRender(+b.getAttribute('data-k'))};
+cRender(0);
+$('nm').value=S.name||'Ines Aliche';if(S.name)$('nh').textContent=S.name;
+$('nm').oninput=function(){S.name=this.value;save();$('nh').textContent=this.value||'Ines Aliche'};
+render();wod();stats();
+</script>
+</body>
+</html>
